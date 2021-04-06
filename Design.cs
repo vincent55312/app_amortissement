@@ -7,7 +7,7 @@ namespace Application_amortissement
     {
         public static ConsoleColor lineColor = ConsoleColor.Yellow;
         public static ConsoleColor underTagColor = ConsoleColor.Red;
-        public static ConsoleColor tagColor = ConsoleColor.Magenta;
+        public static ConsoleColor tagColor = ConsoleColor.Cyan;
         public static ConsoleColor baseColor = ConsoleColor.Yellow;
         public static ConsoleColor keyValidateColor = ConsoleColor.Green;
         public static ConsoleColor errorColor = ConsoleColor.Red;

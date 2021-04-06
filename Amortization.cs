@@ -76,7 +76,9 @@ namespace Application_amortissement
                 tx_linear = 1/(decimal)(total_days/days_in_year);
 
                 int i = 0;
-                Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize +" Residual value :"+ residual_value +" Tx linear :"+ tx_linear, ConsoleColor.DarkGreen);
+                Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize, ConsoleColor.DarkGreen);
+                Design.WriterColor("Residual value :"+ residual_value +" Tx linear :"+ rounding(tx_linear), ConsoleColor.DarkGreen);
+
                 while(total_days/days_in_year - i >0){
                     int year = start_date.Year + i;
                     annuities = (base_amortisize-residual_value) * tx_linear;
@@ -185,7 +187,7 @@ namespace Application_amortissement
             catch (Exception e){
                 Design.WriterColor(e.ToString(), ConsoleColor.Red);
             }
-            Design.WriterColor("End of the Amortisize linear", ConsoleColor.Red);
+            Design.WriterColor("End of the Amortisize economic", ConsoleColor.Red);
         }
     }
 }
