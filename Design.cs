@@ -21,7 +21,7 @@ namespace Application_amortissement
         /    |    \|  Y Y  \(  <_> ) |  | \/ |  |  |  | /    /  / __ \_ |  |  |  |(  <_> )|   |  \
         \____|__  /|__|_|  / \____/  |__|    |__|  |__|/_____ \(____  / |__|  |__| \____/ |___|  /
                 \/       \/                                  \/     \/                         \/ ";
-        string me =@"                                                                                       Par Vincent Vuylsteker    ";
+        string me =@"                                                                                 TP Amortissement. Mr Vincent ";
 
             Console.ForegroundColor = lineColor;
             Console.WriteLine(line);
