@@ -1,7 +1,7 @@
 # Amortissement .NET 5 / Framework ConsoleTable 2.4.2
 
 ![alt text](https://github.com/vvuylsteker/app_amortissement/blob/main/img/frontmenu.PNG)
-# 3 modes différents afin de pour calculer : 
+# 3 modes différents afin de calculer : 
 * ## Amortissement Linéaire
 ![alt text](https://github.com/vvuylsteker/app_amortissement/blob/main/img/algo1.PNG)
 * ## Amortissement Dégressif
