@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Application_amortissement</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ConsoleTables" Version="2.4.2" />
+    <PackageReference Include="Obfuscar" Version="2.2.29">
+  <PrivateAssets>all</PrivateAssets>
+  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+</PackageReference>
+  </ItemGroup>
+</Project>
