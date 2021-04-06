@@ -80,7 +80,7 @@ namespace Application_amortissement
 
                 int i = 0;
                 Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize, ConsoleColor.DarkGreen);
-                Design.WriterColor("Residual value :"+ residual_value +" Tx linear :"+ rounding(tx_linear), ConsoleColor.DarkGreen);
+                Design.WriterColor("Residual value :"+ residual_value +" Tx linear :"+ rounding(tx_linear)+"\n", ConsoleColor.DarkGreen);
 
                 while(total_days/days_in_year - i >0){
                     int year = start_date.Year + i;
@@ -113,7 +113,7 @@ namespace Application_amortissement
                 Design.WriterColor("Input the residual value (format type decimal) :", ConsoleColor.Red);
                 residual_value = decimal.Parse(Console.ReadLine());
                 
-                var table = new ConsoleTable("Years", "Base Amortization","Tx linerar", "Tx decline", "Annuities", "Book value");
+                var table = new ConsoleTable("Years", "Base Amortization","Tx linear", "Tx decline", "Annuities", "Book value");
 
                 DateTime end_year = new DateTime(start_date.Year, 12, 31);
                 days_first_year = (end_year - start_date).Days;
