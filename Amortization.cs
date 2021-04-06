@@ -12,8 +12,8 @@ namespace Application_amortissement
         private decimal compatable_value {get; set;}
         private DateTime start{get; set;}
         private int years_duration {get; set;}
-        private decimal totaldays {get; set;}
-        private decimal daysfirstyear {get; set;}
+        private decimal total_days {get; set;}
+        private decimal days_first_year {get; set;}
         private int days_in_year = 365;
         public DateTime getInputDate(){
             try{
@@ -40,24 +40,24 @@ namespace Application_amortissement
                 start = getInputDate();
                 Design.WriterColor("Saisir la durée d'amortissement (input type int) :", ConsoleColor.Green);
                 years_duration = int.Parse(Console.ReadLine());
-                Design.WriterColor("Saisir la base d'amortissement (input type decimal) :", ConsoleColor.Green);
+                Design.WriterColor("Saisir la base d'amortissement (input type decimal) :", ConsoleColor.Blue);
                 base_amortisize = decimal.Parse(Console.ReadLine());
                 Design.WriterColor("Renseigner la valeur résiduelle (input type decimal) :", ConsoleColor.Red);
                 residual_value = decimal.Parse(Console.ReadLine());
                 
-                var table = new ConsoleTable("Années", "Base d’amortissement ", "Annuités","Cumul des annuités", "Valeur comptable");
+                var table = new ConsoleTable("Années", "Base d’amortissement ", "Annuités", "Cumul des annuités", "Valeur comptable");
 
-                DateTime endyear = new DateTime(start.Year, 12, 31);
-                daysfirstyear = (endyear - start).Days;
-                totaldays = daysfirstyear + years_duration * days_in_year;
-                tx_linear = 1/(decimal)(totaldays/days_in_year);
+                DateTime end_year = new DateTime(start.Year, 12, 31);
+                days_first_year = (end_year - start).Days;
+                total_days = days_first_year + years_duration * days_in_year;
+                tx_linear = 1/(decimal)(total_days/days_in_year);
 
                 int i = 0;
                 Design.WriterColor("Start :" + start.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize +" Residual value :"+ residual_value +" Tx linear :"+ tx_linear, ConsoleColor.DarkGreen);
-                while(totaldays/days_in_year - i >0){
+                while(total_days/days_in_year - i >0){
                     int year = start.Year + i;
                     annuities = (base_amortisize-residual_value) * tx_linear;
-                    if(i==0) annuities = annuities*(daysfirstyear/days_in_year);
+                    if(i==0) annuities = annuities*(days_first_year/days_in_year);
                     volume_annuities += annuities;
                     compatable_value = base_amortisize - volume_annuities;
                     table.AddRow(year, base_amortisize, rounding(annuities), rounding(volume_annuities), rounding(compatable_value));
