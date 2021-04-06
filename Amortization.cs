@@ -19,11 +19,11 @@ namespace Application_amortissement
 
         public DateTime getInputDate(){
             try{
-                Console.Write("Input year : ");
+                Console.Write("Input year : (format type int) ");
                 int y = int.Parse(Console.ReadLine());
-                Console.Write("Input month : ");
+                Console.Write("Input month : (format type [0-12])");
                 int m = int.Parse(Console.ReadLine());
-                Console.Write("Input day : ");
+                Console.Write("Input day : (format [0-31]");
                 int d = int.Parse(Console.ReadLine());
                 return new DateTime(y,m,d);
             }catch(Exception e){
@@ -43,11 +43,11 @@ namespace Application_amortissement
             try{
                 Design.WriterColor("Input starting date :", ConsoleColor.White);
                 start_date = getInputDate();
-                Design.WriterColor("Input the Amortization time in year(s) (input type int) :", ConsoleColor.Green);
+                Design.WriterColor("Input the Amortization time in years (format type int) :", ConsoleColor.Green);
                 years_duration = int.Parse(Console.ReadLine());
-                Design.WriterColor("Input the base Amortization (input type decimal) :", ConsoleColor.Blue);
+                Design.WriterColor("Input the base Amortization (format type decimal) :", ConsoleColor.Blue);
                 base_amortisize = decimal.Parse(Console.ReadLine());
-                Design.WriterColor("Input the residual value (input type decimal) :", ConsoleColor.Red);
+                Design.WriterColor("Input the residual value (format type decimal) :", ConsoleColor.Red);
                 residual_value = decimal.Parse(Console.ReadLine());
                 
                 var table = new ConsoleTable("Years", "Base Amortization ", "Annuities", "Cumulative Annuities", "Book value");

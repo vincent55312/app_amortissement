@@ -21,7 +21,7 @@ namespace Application_amortissement
         /    |    \|  Y Y  \(  <_> ) |  | \/ |  |  |  | /    /  / __ \_ |  |  |  |(  <_> )|   |  \
         \____|__  /|__|_|  / \____/  |__|    |__|  |__|/_____ \(____  / |__|  |__| \____/ |___|  /
                 \/       \/                                  \/     \/                         \/ ";
-        string me =@"                                                                       ConsoleTable Amortization by Vvuylsteker ";
+        string me =@"                                                                ConsoleTable Amortization by Vvuylsteker ";
 
             Console.ForegroundColor = lineColor;
             Console.WriteLine(line);
