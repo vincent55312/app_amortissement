@@ -4,9 +4,9 @@
 * Amortissement Linéaire
 * Amortissement Dégressif
 * Amortissement en fonction des avantages économiques produits 
-
-### Prise en compte des dates pour les calculs des premières annuités
-### Menu et design ASCII
-### Interface utilisateur et facile à prendre en main
-### Calculs arrondis graphiquement 
-### Gère les erreurs de format des input de l'utilisateur
+## De nombreuses fonctionnalités ; 
+* Prise en compte des dates pour les calculs des premières annuités
+* Menu et design style ASCII
+* Interface utilisateur et facile à prendre en main
+* Calculs arrondis graphiquement
+* Gère les erreurs de format des données saisies par l'utilisateur
