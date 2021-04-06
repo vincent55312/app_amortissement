@@ -18,7 +18,11 @@ namespace Application_amortissement
         private decimal days_first_year {get; set;}
         private int days_in_year = 365;
         private int precision = 3;
-
+        public decimal getCoefficient(decimal year){
+            if (year<5) return 1.25M;
+            else if (year <7) return 1.75M;
+            else return 2.25M;
+        }
         public List<int> inputEconomicValues(int years){
             int i = 0;
             List<int> values = new List<int>();
@@ -47,12 +51,6 @@ namespace Application_amortissement
 
         public decimal rounding(decimal d){
             return Math.Round(d,precision,MidpointRounding.ToEven);
-        }
-
-        public decimal getCoefficient(decimal year){
-            if (year<5) return 1.25M;
-            else if (year <7) return 1.75M;
-            else return 2.25M;
         }
 
         public void Amortisize_linear(){
