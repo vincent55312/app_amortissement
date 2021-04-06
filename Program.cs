@@ -33,7 +33,9 @@ namespace Application_amortissement
                     Design.displayResult();
                     return true;
                 case "C":
-                    Design.printTag();
+                    Amortisize c = new Amortisize();
+                    c.Amortisize_economic();
+                    Design.displayResult();
                     return true;
                 default:
                     Console.Clear();
