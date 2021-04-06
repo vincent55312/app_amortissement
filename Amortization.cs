@@ -22,24 +22,24 @@ namespace Application_amortissement
         private int precision = 3;
 
 
-        public decimal getCoefficient(decimal year){
+        private decimal getCoefficient(decimal year){
             if (year<5) return 1.25M;
             else if (year <7) return 1.75M;
             else return 2.25M;
         }
 
-        public List<int> inputEconomicValues(int years){
+        private List<decimal> inputEconomicValues(int years){
             int i = 0;
-            List<int> values = new List<int>();
+            List<decimal> values = new List<decimal>();
             while(years > i){
-                Design.WriterColor("Input your economic advantage of the "+ i+" year", ConsoleColor.Green);
-                values.Add(int.Parse(Console.ReadLine()));
+                Design.WriterColor("Input your economic advantage of the year "+i+" :", ConsoleColor.Green);
+                values.Add(decimal.Parse(Console.ReadLine()));
                 i++;
             }
             return values;
         }
 
-        public DateTime getInputDate(){
+        private DateTime getInputDate(){
             try{
                 Console.Write("Input year (format type int) :");
                 int y = int.Parse(Console.ReadLine());
@@ -54,7 +54,7 @@ namespace Application_amortissement
             }
         }
 
-        public decimal rounding(decimal d){
+        private decimal rounding(decimal d){
             return Math.Round(d,precision,MidpointRounding.ToEven);
         }
 
@@ -156,7 +156,7 @@ namespace Application_amortissement
                 years_duration = int.Parse(Console.ReadLine());
                 Design.WriterColor("Input the base Amortization (format type decimal) :", ConsoleColor.Blue);
                 base_amortisize = decimal.Parse(Console.ReadLine());
-                List<int> economic = inputEconomicValues(years_duration);
+                List<decimal> economic = inputEconomicValues(years_duration);
 
                 var table = new ConsoleTable("Years", "Base Amortization", "Annuities", "Book value");
 
