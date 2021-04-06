@@ -6,6 +6,7 @@ namespace Application_amortissement
     {
         static void Main(string[] args)
         {
+            Console.Title = "Amortization V0.0.1";
             sendMenu();
         }
 
