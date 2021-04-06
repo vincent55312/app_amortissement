@@ -76,11 +76,11 @@ namespace Application_amortissement
 
         public static void getMenu(){
             colorK("[A]");
-            Console.Write("    Generer le tableau linéaire\n");
+            Console.Write("    Generer le tableau d'amortissement linéaire\n");
             colorK("[B]");
-            Console.Write("    Generer le tableau d'annuité\n");
+            Console.Write("    Generer le tableau d'amortissement degressif\n");
             colorK("[C]");
-            Console.Write("    Generer le tableau degressif\n");
+            Console.Write("    Generer le tableau d'amortissement en fonction des avantages économiques produits\n");
         }
 
         public static void colorK(string key){
