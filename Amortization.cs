@@ -15,6 +15,7 @@ namespace Application_amortissement
         private decimal total_days {get; set;}
         private decimal days_first_year {get; set;}
         private int days_in_year = 365;
+        private int precision = 3;
 
 
         public DateTime getInputDate(){
@@ -33,7 +34,7 @@ namespace Application_amortissement
         }
 
         public decimal rounding(decimal d){
-            return Math.Round(d,3,MidpointRounding.ToEven);
+            return Math.Round(d,precision,MidpointRounding.ToEven);
         }
 
 
@@ -50,11 +51,11 @@ namespace Application_amortissement
                 Design.WriterColor("Input the residual value (format type decimal) :", ConsoleColor.Red);
                 residual_value = decimal.Parse(Console.ReadLine());
                 
-                var table = new ConsoleTable("Years", "Base Amortization ", "Annuities", "Cumulative Annuities", "Book value");
+                var table = new ConsoleTable("Years", "Base Amortization", "Annuities", "Cumulative Annuities", "Book value");
 
                 DateTime end_year = new DateTime(start_date.Year, 12, 31);
                 days_first_year = (end_year - start_date).Days;
-                total_days = days_first_year + years_duration * days_in_year;
+                total_days = days_first_year + (years_duration-1) * days_in_year;
                 tx_linear = 1/(decimal)(total_days/days_in_year);
 
                 int i = 0;
@@ -65,7 +66,7 @@ namespace Application_amortissement
                     if(i==0) annuities = annuities*(days_first_year/days_in_year);
                     volume_annuities += annuities;
                     book_value = base_amortisize - volume_annuities;
-                    table.AddRow(year, base_amortisize, rounding(annuities), rounding(volume_annuities), rounding(book_value));
+                    table.AddRow(year, base_amortisize - residual_value, rounding(annuities), rounding(volume_annuities), rounding(book_value));
                     i++;
                 }
                 table.Write(Format.Alternative);
@@ -77,7 +78,7 @@ namespace Application_amortissement
         }
 
         public void Amortisize_declining(){
-            
+
         }
     }
 }
