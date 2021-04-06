@@ -23,6 +23,9 @@ namespace Application_amortissement
             switch (Design.getUserKeys().ToUpper())
             {
                 case "A":
+                    Amortisize a = new Amortisize();
+                    a.Amortisize_linear();
+                    Design.displayResult();
                     return true;
                 case "B":
                     return true;
