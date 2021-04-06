@@ -28,6 +28,9 @@ namespace Application_amortissement
                     Design.displayResult();
                     return true;
                 case "B":
+                    Amortisize b = new Amortisize();
+                    b.Amortisize_declining();
+                    Design.displayResult();
                     return true;
                 case "C":
                     Design.printTag();
