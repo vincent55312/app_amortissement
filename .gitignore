@@ -1,2 +1,5 @@
 obj/
 bin/
+Properties/
+.vs/
+Application amortissement.csproj.user
