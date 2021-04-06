@@ -100,12 +100,5 @@ namespace Application_amortissement
             Console.ReadLine();
         }
 
-        public static void charging(){
-            Console.ForegroundColor = keyValidateColor;             
-            Console.Write("Loading the configuration...");
-            Console.ForegroundColor = baseColor;
-        }
-        
-
     }
 }
