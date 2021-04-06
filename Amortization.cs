@@ -75,5 +75,9 @@ namespace Application_amortissement
             }
             Design.WriterColor("End of the Amortisize linear", ConsoleColor.Red);
         }
+
+        public void Amortisize_declining(){
+            
+        }
     }
 }
