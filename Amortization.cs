@@ -7,6 +7,7 @@ namespace Application_amortissement
         private decimal base_amortisize {get; set;}
         private decimal residual_value {get; set;}
         private decimal tx_linear {get; set;}
+        private decimal tx_decline{get; set;}
         private decimal annuities {get; set;}
         private decimal volume_annuities {get; set;}
         private decimal book_value {get; set;}
@@ -84,7 +85,48 @@ namespace Application_amortissement
         }
 
         public void Amortisize_declining(){
+            Console.Clear();
+            Design.printTag();
+            try{
+                Design.WriterColor("Input starting date :", ConsoleColor.White);
+                start_date = getInputDate();
+                Design.WriterColor("Input the Amortization time in years (format type int) :", ConsoleColor.Green);
+                years_duration = int.Parse(Console.ReadLine());
+                Design.WriterColor("Input the base Amortization (format type decimal) :", ConsoleColor.Blue);
+                base_amortisize = decimal.Parse(Console.ReadLine());
+                Design.WriterColor("Input the residual value (format type decimal) :", ConsoleColor.Red);
+                residual_value = decimal.Parse(Console.ReadLine());
+                
+                var table = new ConsoleTable("Years", "Base Amortization","Tx linerar", "Tx decline", "Annuities", "Book value");
 
+                DateTime end_year = new DateTime(start_date.Year, 12, 31);
+                days_first_year = (end_year - start_date).Days;
+                total_days = days_first_year + (years_duration-1) * days_in_year;
+
+                tx_decline = 1/ (decimal)years_duration * getCoefficient(years_duration);
+                base_amortisize = base_amortisize-residual_value;
+
+                Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize +" Residual value :"+ residual_value +" Tx linear :"+ tx_linear, ConsoleColor.DarkGreen);
+                int i = 0;
+                while(total_days/days_in_year - i >0){
+                    int year = start_date.Year + i;
+                    tx_linear = 1/(decimal)(years_duration - i);
+                    decimal tx_to_use = (tx_decline> tx_linear) ? tx_decline : tx_linear;
+
+                    annuities = (base_amortisize-residual_value) * tx_to_use;
+                    if(i==0) annuities = annuities*(days_first_year/days_in_year);
+
+                    book_value = base_amortisize - annuities;
+                    table.AddRow(year, rounding(base_amortisize), rounding(tx_linear), rounding(tx_decline), rounding(annuities) , rounding(book_value));
+                    base_amortisize = book_value;
+                    i++;
+                }
+                table.Write(Format.Alternative);
+            }
+            catch (Exception e){
+                Design.WriterColor(e.ToString(), ConsoleColor.Red);
+            }
+            Design.WriterColor("End of the Amortisize declining", ConsoleColor.Red);
         }
     }
 }
