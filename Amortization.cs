@@ -18,13 +18,14 @@ namespace Application_amortissement
         private int precision = 3;
 
 
+
         public DateTime getInputDate(){
             try{
-                Console.Write("Input year : (format type int) ");
+                Console.Write("Input year (format type int) :");
                 int y = int.Parse(Console.ReadLine());
-                Console.Write("Input month : (format type [0-12])");
+                Console.Write("Input month (format type [1-12]) :");
                 int m = int.Parse(Console.ReadLine());
-                Console.Write("Input day : (format [0-31]");
+                Console.Write("Input day (format [1-31]) :");
                 int d = int.Parse(Console.ReadLine());
                 return new DateTime(y,m,d);
             }catch(Exception e){
@@ -37,6 +38,11 @@ namespace Application_amortissement
             return Math.Round(d,precision,MidpointRounding.ToEven);
         }
 
+        public decimal getCoefficient(decimal year){
+            if (year<5) return 1.25M;
+            else if (year <7) return 1.75M;
+            else return 2.25M;
+        }
 
         public void Amortisize_linear(){
             Console.Clear();
