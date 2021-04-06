@@ -9,7 +9,7 @@ namespace Application_amortissement
         private decimal tx_linear {get; set;}
         private decimal annuities {get; set;}
         private decimal volume_annuities {get; set;}
-        private decimal compatable_value {get; set;}
+        private decimal book_value {get; set;}
         private DateTime start_date{get; set;}
         private int years_duration {get; set;}
         private decimal total_days {get; set;}
@@ -19,11 +19,11 @@ namespace Application_amortissement
 
         public DateTime getInputDate(){
             try{
-                Console.Write("Saisir l'année : ");
+                Console.Write("Input year : ");
                 int y = int.Parse(Console.ReadLine());
-                Console.Write("Saisir le mois : ");
+                Console.Write("Input month : ");
                 int m = int.Parse(Console.ReadLine());
-                Console.Write("Saisir le jour : ");
+                Console.Write("Input day : ");
                 int d = int.Parse(Console.ReadLine());
                 return new DateTime(y,m,d);
             }catch(Exception e){
@@ -41,16 +41,16 @@ namespace Application_amortissement
             Console.Clear();
             Design.printTag();
             try{
-                Design.WriterColor("Saisir date de commencement:", ConsoleColor.White);
+                Design.WriterColor("Input starting date :", ConsoleColor.White);
                 start_date = getInputDate();
-                Design.WriterColor("Saisir la durée d'amortissement (input type int) :", ConsoleColor.Green);
+                Design.WriterColor("Input the Amortization time in year(s) (input type int) :", ConsoleColor.Green);
                 years_duration = int.Parse(Console.ReadLine());
-                Design.WriterColor("Saisir la base d'amortissement (input type decimal) :", ConsoleColor.Blue);
+                Design.WriterColor("Input the base Amortization (input type decimal) :", ConsoleColor.Blue);
                 base_amortisize = decimal.Parse(Console.ReadLine());
-                Design.WriterColor("Renseigner la valeur résiduelle (input type decimal) :", ConsoleColor.Red);
+                Design.WriterColor("Input the residual value (input type decimal) :", ConsoleColor.Red);
                 residual_value = decimal.Parse(Console.ReadLine());
                 
-                var table = new ConsoleTable("Années", "Base d’amortissement ", "Annuités", "Cumul des annuités", "Valeur comptable");
+                var table = new ConsoleTable("Years", "Base Amortization ", "Annuities", "Cumulative Annuities", "Book value");
 
                 DateTime end_year = new DateTime(start_date.Year, 12, 31);
                 days_first_year = (end_year - start_date).Days;
@@ -64,8 +64,8 @@ namespace Application_amortissement
                     annuities = (base_amortisize-residual_value) * tx_linear;
                     if(i==0) annuities = annuities*(days_first_year/days_in_year);
                     volume_annuities += annuities;
-                    compatable_value = base_amortisize - volume_annuities;
-                    table.AddRow(year, base_amortisize, rounding(annuities), rounding(volume_annuities), rounding(compatable_value));
+                    book_value = base_amortisize - volume_annuities;
+                    table.AddRow(year, base_amortisize, rounding(annuities), rounding(volume_annuities), rounding(book_value));
                     i++;
                 }
                 table.Write(Format.Alternative);
