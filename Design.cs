@@ -21,7 +21,7 @@ namespace Application_amortissement
         /    |    \|  Y Y  \(  <_> ) |  | \/ |  |  |  | /    /  / __ \_ |  |  |  |(  <_> )|   |  \
         \____|__  /|__|_|  / \____/  |__|    |__|  |__|/_____ \(____  / |__|  |__| \____/ |___|  /
                 \/       \/                                  \/     \/                         \/ ";
-        string me =@"                                                                                 TP Amortissement. Mr Vincent ";
+        string me =@"                                                                       ConsoleTable Amortization by Vvuylsteker ";
 
             Console.ForegroundColor = lineColor;
             Console.WriteLine(line);
@@ -76,11 +76,11 @@ namespace Application_amortissement
 
         public static void getMenu(){
             colorK("[A]");
-            Console.Write("    Generer le tableau d'amortissement linéaire\n");
+            Console.Write("    Generate the linear depreciation table\n");
             colorK("[B]");
-            Console.Write("    Generer le tableau d'amortissement degressif\n");
+            Console.Write("    Generate the declining balance table\n");
             colorK("[C]");
-            Console.Write("    Generer le tableau d'amortissement en fonction des avantages économiques produits\n");
+            Console.Write("    Generate the depreciation table according to the economic benefits produced\n");
         }
 
         public static void colorK(string key){
