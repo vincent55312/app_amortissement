@@ -28,7 +28,7 @@ public class Amortisize
         int i = 0;
         List<decimal> values = new List<decimal>();
         while(years > i){
-            Design.WriterColor("Input your economic advantage of the year "+i+" :", ConsoleColor.Green);
+            Design.WriterColor("Input your economic advantages of the year "+i+" :", ConsoleColor.Green);
             values.Add(decimal.Parse(Console.ReadLine()));
             i++;
         }
