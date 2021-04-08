@@ -5,6 +5,7 @@
 * Meilleurs messages des erreurs
 * Debug du calcul linéaire
 * Taux linéaire plus précis
+
 ![alt text](https://github.com/vvuylsteker/app_amortissement/blob/main/img/errortest.PNG)
 
 ![alt text](https://github.com/vvuylsteker/app_amortissement/blob/main/img/frontmenu.PNG)
