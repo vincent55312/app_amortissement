@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Title = "Amortization V0.0.1";
+        Console.Title = "Amortization V0.0.2";
         sendMenu();
     }
 

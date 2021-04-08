@@ -5,7 +5,6 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Application_amortissement</RootNamespace>
     <Version>0.0.2</Version>
-    <ApplicationIcon>logoapp.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ConsoleTables" Version="2.4.2" />
