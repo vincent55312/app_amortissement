@@ -45,7 +45,7 @@ public class Amortisize
             int d = int.Parse(Console.ReadLine());
             return new DateTime(y,m,d);
         }catch(Exception e){
-            Design.WriterColor(e.ToString(), ConsoleColor.Red);
+            Design.WriterColor(e.Message.ToString(), ConsoleColor.Red);
             return new DateTime(0,0,0);
         }
     }
@@ -69,28 +69,28 @@ public class Amortisize
             
             var table = new ConsoleTable("Years", "Base Amortization", "Annuities", "Cumulative Annuities", "Book value");
 
+            base_amortisize -= residual_value;
             DateTime end_year = new DateTime(start_date.Year, 12, 31);
             days_first_year = (end_year - start_date).Days;
             total_days = days_first_year + (years_duration-1) * days_in_year;
             tx_linear = 1/(decimal)(total_days/days_in_year);
 
-            int i = 0;
             Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize, ConsoleColor.DarkGreen);
             Design.WriterColor("Residual value :"+ residual_value +" Tx linear :"+ rounding(tx_linear)+"\n", ConsoleColor.DarkGreen);
-
+            int i = 0;
             while(total_days/days_in_year - i >0){
                 int year = start_date.Year + i;
-                annuities = (base_amortisize-residual_value) * tx_linear;
+                annuities = base_amortisize * tx_linear;
                 if(i==0) annuities = annuities*(days_first_year/days_in_year);
                 volume_annuities += annuities;
-                book_value = base_amortisize - volume_annuities;
-                table.AddRow(year, base_amortisize - residual_value, rounding(annuities), rounding(volume_annuities), rounding(book_value));
+                book_value = base_amortisize + residual_value - volume_annuities;
+                table.AddRow(year, base_amortisize, rounding(annuities), rounding(volume_annuities), rounding(book_value));
                 i++;
             }
             table.Write(Format.Alternative);
         }
         catch (Exception e){
-            Design.WriterColor(e.ToString(), ConsoleColor.Red);
+            Design.WriterColor(e.Message.ToString(), ConsoleColor.Red);
         }
         Design.WriterColor("End of the Amortisize linear", ConsoleColor.Red);
     }
@@ -116,7 +116,7 @@ public class Amortisize
             total_days = days_first_year + (years_duration-1) * days_in_year;
 
             tx_decline = 1/ (decimal)years_duration * getCoefficient(years_duration);
-            base_amortisize = base_amortisize-residual_value;
+            base_amortisize -= residual_value;
 
             Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize +" Residual value :"+ residual_value +" Tx decline selected :"+ tx_decline, ConsoleColor.DarkGreen);
             int i = 0;
@@ -136,7 +136,7 @@ public class Amortisize
             table.Write(Format.Alternative);
         }
         catch (Exception e){
-            Design.WriterColor(e.ToString(), ConsoleColor.Red);
+            Design.WriterColor(e.Message.ToString(), ConsoleColor.Red);
         }
         Design.WriterColor("End of the Amortisize declining", ConsoleColor.Red);
     }
@@ -159,13 +159,12 @@ public class Amortisize
             DateTime end_year = new DateTime(start_date.Year, 12, 31);
             days_first_year = (end_year - start_date).Days;
             total_days = days_first_year + (years_duration-1) * days_in_year;
-            base_amortisize = base_amortisize;
             book_value = base_amortisize;
-            int i = 0;
             decimal rest = 0;
             int year;
             
             Design.WriterColor("Start :" + start_date.ToString() +" Duration :"+ years_duration+" years  Base amortisize :" + base_amortisize, ConsoleColor.DarkGreen);
+            int i = 0;
             while(total_days/days_in_year - i >0){
                 year = start_date.Year + i;
                 annuities = economic[i];
@@ -186,7 +185,7 @@ public class Amortisize
             table.Write(Format.Alternative);
         }
         catch (Exception e){
-            Design.WriterColor(e.ToString(), ConsoleColor.Red);
+            Design.WriterColor(e.Message.ToString(), ConsoleColor.Red);
         }
         Design.WriterColor("End of the Amortisize economic", ConsoleColor.Red);
     }
