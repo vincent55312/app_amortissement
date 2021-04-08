@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Application_amortissement</RootNamespace>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <ApplicationIcon>logoapp.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
